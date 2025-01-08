@@ -210,13 +210,25 @@ module.exports = {
           'frame-lib': {
             name: 'frame-lib',
             test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom|react-router)[\\/]/,
-            priority: 10,
+            priority: 20,
             chunks: 'all',
           },
           'ui-lib': {
             name: 'ui-lib',
-            test: /[\\/]node_modules[\\/](antd|@ant-design|@mui\/material)[\\/]/,
-            priority: 9,
+            test: /[\\/]node_modules[\\/](antd|@ant-design|@mui|styled-components|@emotion)[\\/]/,
+            priority: 18,
+            chunks: 'all',
+          },
+          'utils-lib': {
+            name: 'utils-lib',
+            test: /[\\/]node_modules[\\/](axios|dayjs|lodash-es|@tanstack|react-hook-form|zustand|react-intl)[\\/]/,
+            priority: 16,
+            chunks: 'all',
+          },
+          locales: {
+            name: 'locales-vendor',
+            test: /src[\\/]locales[\\/].*\.(ts)$/,
+            priority: 14,
             chunks: 'all',
           },
           charts: {
