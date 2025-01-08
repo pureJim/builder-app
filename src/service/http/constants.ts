@@ -1,0 +1,6 @@
+const QUERY_CONSTANTS = {
+  REQ_SUCCESS_CODE: 0,
+  REQ_FAIL_CODE: 9999,
+};
+
+export default QUERY_CONSTANTS;

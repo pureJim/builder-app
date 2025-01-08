@@ -1,0 +1,8 @@
+/build
+/node_modules
+/config
+.eslintrc.js
+commitlint.config.js
+.stylelintrc.js
+cypress.config.ts
+/cypress
