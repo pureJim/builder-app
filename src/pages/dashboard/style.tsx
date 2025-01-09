@@ -33,6 +33,12 @@ export const Container = styled.div`
     user-select: none;
     pointer-events: none;
   }
+
+  .editor-paragraph {
+    margin: 0;
+    line-height: 22px;
+    font-size: 14px;
+  }
 `;
 
 export const PlaceholderContainer = styled.div``;

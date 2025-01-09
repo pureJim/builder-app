@@ -49,6 +49,7 @@ export default function ToolbarPlugin() {
   }, []);
 
   useEffect(() => {
+    // Register listeners
     return mergeRegister(
       editor.registerUpdateListener(({ editorState }) => {
         editorState.read(() => {

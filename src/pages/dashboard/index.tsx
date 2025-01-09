@@ -1,10 +1,13 @@
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
+import { CheckListPlugin } from '@lexical/react/LexicalCheckListPlugin';
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 
+import EmojiPlugin from './plugins/EmojiPlugin';
+import { EmojiNode } from './plugins/EmojiPlugin/EmojiNode';
 import ToolbarPlugin from './plugins/ToolbarPlugin';
 import TreeViewPlugin from './plugins/TreeViewPlugin';
 import { Container, PlaceholderContainer } from './style';
@@ -92,6 +95,7 @@ const DashboardPage = () => {
     namespace: 'MyEditor',
     theme,
     onError,
+    nodes: [EmojiNode],
   };
 
   return (
@@ -106,6 +110,8 @@ const DashboardPage = () => {
         <HistoryPlugin />
         <AutoFocusPlugin />
         <TreeViewPlugin />
+        <EmojiPlugin />
+        <CheckListPlugin />
       </LexicalComposer>
     </Container>
   );
