@@ -1,11 +1,11 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { TextNode } from 'lexical';
 import { useEffect } from 'react';
-import { EmojiNode } from './EmojiNode';
+import { $createEmojiNode, EmojiNode } from './EmojiNode';
 
 // 查找文本中的 emoji 短码
 const find = (text: string) => {
-  const emojiMatch = text.match(/(:[a-zA-Z0-9_+-]+:)/); // 匹配 :emoji_name: 的格式
+  const emojiMatch = /(:[a-zA-Z0-9_+-]+:)/.exec(text); // 匹配 :emoji_name: 的格式
   if (emojiMatch) {
     return {
       emoji: emojiMatch[0],
@@ -38,8 +38,11 @@ const $textNodeTransform = (node: TextNode): void => {
     [, targetNode] = node.splitText(startOffset, endOffset);
   }
 
-  const emojiNode = EmojiNode.createEmojiNode(emojiShortcode.emoji);
+  const emojiNode = $createEmojiNode(emojiShortcode.emoji);
   targetNode.replace(emojiNode);
+
+  // 让光标移到 emoji 节点后方
+  emojiNode.selectNext();
 };
 
 const EmojiPlugin = () => {

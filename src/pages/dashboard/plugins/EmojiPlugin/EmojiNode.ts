@@ -23,7 +23,8 @@ export class EmojiNode extends TextNode {
   }
 
   static clone(node: TextNode): TextNode {
-    return new EmojiNode((node as EmojiNode).__unifiedID, node.__key);
+    const cloned = new EmojiNode((node as EmojiNode).__unifiedID, node.__key);
+    return cloned;
   }
 
   createDOM(): HTMLElement {
@@ -34,14 +35,17 @@ export class EmojiNode extends TextNode {
     return element;
   }
 
-  static createEmojiNode(unifiedID: string): EmojiNode {
-    const node = new EmojiNode(unifiedID);
-    node.setMode('token'); // 保持 token 模式
-    return node;
+  updateDOM(): boolean {
+    const element = document.createElement('span');
+    element.className = 'emoji-node';
+    element.contentEditable = 'false'; // 设置为不可编辑
+    element.innerText = emojify(this.__unifiedID);
+    return true;
   }
 
   static importJSON(serializedNode: SerializedEmojiNode): EmojiNode {
-    return this.createEmojiNode(serializedNode.unifiedID);
+    // eslint-disable-next-line no-use-before-define
+    return $createEmojiNode(serializedNode.unifiedID);
   }
 
   exportJSON(): SerializedEmojiNode {
@@ -50,4 +54,9 @@ export class EmojiNode extends TextNode {
       unifiedID: this.__unifiedID,
     };
   }
+}
+
+export function $createEmojiNode(unifiedID: string): EmojiNode {
+  const node = new EmojiNode(unifiedID).setMode('token');
+  return node;
 }

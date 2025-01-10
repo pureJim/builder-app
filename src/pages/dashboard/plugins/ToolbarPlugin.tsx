@@ -58,8 +58,9 @@ export default function ToolbarPlugin() {
       }),
       editor.registerCommand(
         SELECTION_CHANGE_COMMAND,
-        (_payload, _newEditor) => {
-          console.log(_payload, _newEditor);
+        () => {
+          // (_payload, _newEditor) => {
+          // console.log(_payload, _newEditor);
           $updateToolbar();
           return false;
         },
