@@ -1,11 +1,12 @@
 {
-  "name": "react-ts-webpack-mui",
+  "name": "builder-app",
   "version": "1.0.0",
-  "description": "React + TypeScript + Webpack + mui",
+  "description": "Builder 底座",
   "keywords": [
     "react",
     "typescript",
-    "steam"
+    "lexical",
+    "builder"
   ],
   "license": "ISC",
   "author": "Jim",
@@ -61,6 +62,7 @@
     "react-router": "^7.1.1",
     "react-scan": "^0.0.52",
     "react-transition-group": "^4.4.5",
+    "react-use": "^17.6.0",
     "rxjs": "^7.8.1",
     "styled-components": "^6.1.8",
     "zustand": "^4.5.1"
